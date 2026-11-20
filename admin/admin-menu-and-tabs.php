@@ -750,6 +750,9 @@ class Custom_Group_Health_Plugin_Tab_Templates {
                                                 }
                                                 self::set_template( 'dt_default_template' );
                                             } else if ( isset( $_POST['set-twelve-practices'] ) ) {
+                                                if ( !isset( $_POST['set_template_nonce'] ) || !wp_verify_nonce( sanitize_key( $_POST['set_template_nonce'] ), 'set_template' ) ) {
+                                                    return;
+                                                }
                                                 self::set_template( 'twelve_practices_template' );
                                             }
                                             ?>
